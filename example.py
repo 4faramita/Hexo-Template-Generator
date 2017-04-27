@@ -88,7 +88,7 @@ else:
     try:
         tag = sys.argv[2]
     except IndexError:
-        tag = 'thinking'
+        tag = ''
 
 path_dir = ''
 
