@@ -128,15 +128,23 @@ else:
         title = url,
         tag   = tag,
         date  = time.strftime("%F %H:%M:%S", time.localtime()))
-    file_name = '-'.join(url.lower().split(' ')) + '.md'
+    file_name = ''
+    for i in url:
+        if i.isalpha() or i.isdigit():
+            file_name += str(i).lower()
+        elif i == ' ':
+            file_name += '-'
+        elif i == '.':
+            file_name += '_'
+    file_name += '.md'
     full_path = path_dir + file_name
 
 if not os.path.exists(full_path):
-    file = open(full_path, 'w')
-    file.write(tmp)
-    file.close()
-    call(['code', full_path])
+    # file = open(full_path, 'w')
+    # file.write(tmp)
+    # file.close()
+    # call(['code', full_path])
     print('Show time:\n', full_path)
 else:
     print('Pick up from where u left:\n', full_path)
-    call(['code', full_path])
+    # call(['code', full_path])
